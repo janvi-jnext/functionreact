@@ -2,9 +2,17 @@ import { react, useState } from "react";
 
 function Table(props) {
   const { usertabval } = props;
-
+  const { handlesearch } = props;
   return (
     <div>
+      <label htmlFor="search">
+        Search:
+        <input
+          id="search"
+          type="text"
+          onChange={(e) => props.handlesearch(e)}
+        />
+      </label>
       <table>
         <thead>
           <tr>
@@ -19,7 +27,7 @@ function Table(props) {
           {usertabval?.map((item, index) => {
             return (
               <tr>
-                <td>{index + 1}</td>
+                <td>{index}</td>
                 <td>{item?.name}</td>
                 <td>{item?.std}</td>
                 <td>{item?.age}</td>

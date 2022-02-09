@@ -2,10 +2,17 @@ import react, { useState } from "react";
 
 const Form = (props) => {
   const { singleuserinfo } = props;
-  // const { updateData } = props;
+  const { updateData } = props;
+  const { updateitem } = props;
+
   return (
     <div>
-      <form className="Formname" onSubmit={(e) => props.submitData(e)}>
+      <form
+        className="Formname"
+        onSubmit={(e) =>
+          updateData ? props.updateitem(e) : props.submitData(e)
+        }
+      >
         {/* <Button
           variant="contained"
           onClick={() => (type === "add" ? saveInput() : saveChangeHandler())}
@@ -74,7 +81,7 @@ const Form = (props) => {
           <br></br>
         </div>
         <button type="Submit" className="sub-btn">
-          submit
+          {updateData ? "update" : "submit"}
         </button>
       </form>
     </div>
